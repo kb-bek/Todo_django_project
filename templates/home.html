@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<br>
+    <br>
+    <br>
+    <br>
+
+<div class="row justify-content-center mt-5">
+        <div class="col-md-7 text-center" >
+            <img src="{% static 'todo/pick.png' %}" width="120" height="120" class="d-inline-block align-top">
+                 <h1>Онлайн-блокнот</h1>
+            <p>Желаю вам хорошей работы!</p>
+        <a role="button" class="btn btn-primary btn-lg" href="{% url 'signupuser' %}">Начать</a>
+        </div>
+    </div>
+
+{% endblock %}

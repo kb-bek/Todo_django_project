@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            {% if todo %}
+                 <h1>{{ todo.count }} Current Todo{{ todo.count|pluralize }}</h1>
+            {% else %}
+                           <h1>Текущий список задач</h1>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+        {% if todo %}
+            <div class="list-group">
+                {% for todo in todo %}
+                    <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action{% if todo.important %} list-group-item-danger{% endif %}"><b>{{ todo.title }}</b>{% if todo.memo %} - {{ todo.memo|truncatechars:30 }}{% endif %}</a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center">
+                <h2>Похоже, у вас нет задач! Удачи!</h2>
+            <br>
+            <a role="button" class="btn btn-primary" href="{% url 'createtodo' %}">Новая задача</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}
